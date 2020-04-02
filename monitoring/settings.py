@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'measurements',
     'variables',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -78,11 +79,11 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'name_db',
-         'USER': 'user_db',
-         'PASSWORD': 'user_password',
-         'HOST': 'localhost',
-         'PORT': '',
+         'NAME': 'monitoringDB',
+         'USER': 'monitoringUser',
+         'PASSWORD': 'isis2503',
+         'HOST': 'monitoring-db.c7axy2doh1cx.us-east-1.rds.amazonaws.com',
+         'PORT': '5432',
      }
  }
 
@@ -133,3 +134,20 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'media')
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
+
+# Authentication
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "https://isis2503-cigonzalez.auth0.com/v2/logout?returnTo=http%3A%2F%2F3.81.160.92:8000"
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'isis2503-cigonzalez.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'e77UeyD4UASmLPSQKJV3yvRRZGo3Z5NU'
+SOCIAL_AUTH_AUTH0_SECRET = 'uZ_17F3fB8LOu-FtWAVxWXO62q7_y6I-BeSGNX1NL92o01UkCe0UjwfnkKyQsngm'
+SOCIAL_AUTH_AUTH0_SCOPE = [
+    'openid',
+    'profile'
+]
+AUTHENTICATION_BACKENDS = {
+    'monitoring.auth0backend.Auth0',
+    'django.contrib.auth.backends.ModelBackend',
+}
