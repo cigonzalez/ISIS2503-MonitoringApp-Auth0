@@ -19,7 +19,8 @@ class Auth0(BaseOAuth2):
         return "https://" + self.setting('DOMAIN') + "/oauth/token"
         
     def get_user_id(self, details, response):
-        """Return current user id.""" return details['user_id']
+        """Return current user id."""
+        return details['user_id']
         
     def get_user_details(self, response):
         url = 'https://' + self.setting('DOMAIN') + '/userinfo'
