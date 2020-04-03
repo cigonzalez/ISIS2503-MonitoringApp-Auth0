@@ -79,13 +79,24 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': 'monitoringDB',
-         'USER': 'monitoringUser',
+         'NAME': 'monitoringdb',
+         'USER': 'monitoringuser',
          'PASSWORD': 'isis2503',
-         'HOST': 'monitoring-db.c7axy2doh1cx.us-east-1.rds.amazonaws.com',
+         'HOST': '172.24.42.155',
          'PORT': '5432',
      }
  }
+
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#          'NAME': 'monitoringDB',
+#          'USER': 'monitoringUser',
+#          'PASSWORD': 'isis2503',
+#          'HOST': 'monitoring-db.c7axy2doh1cx.us-east-1.rds.amazonaws.com',
+#          'PORT': '5432',
+#      }
+#  }
 
 
 # Password validation
@@ -138,7 +149,7 @@ STATICFILES_DIRS = (
 # Authentication
 LOGIN_URL = "/login/auth0"
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "https://isis2503-cigonzalez.auth0.com/v2/logout?returnTo=http%3A%2F%2F107.22.21.63:8000"
+LOGOUT_REDIRECT_URL = "https://isis2503-cigonzalez.auth0.com/v2/logout?returnTo=http%3A%2F%2F172.24.41.41:8000"
 SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
 SOCIAL_AUTH_AUTH0_DOMAIN = 'isis2503-cigonzalez.auth0.com'
 SOCIAL_AUTH_AUTH0_KEY = 'lFJJkOjEAyM4uEJc8TbX1LPu00HdjCVn'
